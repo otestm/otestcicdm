@@ -43,6 +43,6 @@ jobs:
         
       - name: additional commands
         run: |
-          cd target
+          cd cicd1/target
           ls -a
         
