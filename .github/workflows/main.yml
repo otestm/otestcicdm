@@ -38,7 +38,7 @@ jobs:
           separator: ","
           
       - name: check if proj updated
-        if: !startsWith(steps.changed-files.outputs.modified_files, 'cicd')
+        if: "!startsWith(steps.changed-files.outputs.modified_files, 'cicd')"
         run: |
           exit 1
           
