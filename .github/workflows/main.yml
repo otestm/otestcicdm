@@ -37,6 +37,11 @@ jobs:
         with:
           separator: ","
           
+      - name: check if proj updated
+        if: !startsWith(steps.changed-files.outputs.modified_files, 'cicd')
+        run: |
+          exit 1
+          
       # Runs a single command using the runners shell
       - name: Set up JDK 1.8
         uses: actions/setup-java@v1
