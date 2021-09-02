@@ -44,14 +44,14 @@ jobs:
           java-version: 1.8
 
       # Runs a set of commands using the runners shell
-      - name: Run Maven
+      - name: Run Maven for cicd1
         if: startsWith(steps.changed-files.outputs.modified_files, 'cicd1/')
         run: |
           cd cicd1
           echo "building 1cicd1"
           mvn -B package --file pom.xml
             
-      - name: Run Maven
+      - name: Run Maven for cicd 2
         if: startsWith(steps.changed-files.outputs.modified_files, 'cicd2/')
         run: |
           cd cicd2
@@ -62,8 +62,14 @@ jobs:
       - name: some other commands
         run: ls -a
         
-      - name: additional commands
+      - name: additional commands cicd1
+        if: startsWith(steps.changed-files.outputs.modified_files, 'cicd1/')
         run: |
           cd cicd1/target
           ls -a
         
+      - name: additional commands cicd2
+        if: startsWith(steps.changed-files.outputs.modified_files, 'cicd1/')
+        run: |
+          cd cicd2/target
+          ls -a        
