@@ -50,7 +50,6 @@ jobs:
 
       # Runs a set of commands using the runners shell
       - name: Run Maven for cicd1
-      - shell: pwsh
         if: startsWith(steps.changed-files.outputs.modified_files, 'cicd1/')
         run: |
           cd cicd1
@@ -59,7 +58,6 @@ jobs:
         
             
       - name: Run Maven for cicd 2
-      - shell: pwsh
         if: startsWith(steps.changed-files.outputs.modified_files, 'cicd2/')
         run: |
           cd cicd2
