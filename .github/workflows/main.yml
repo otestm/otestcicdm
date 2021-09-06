@@ -78,10 +78,12 @@ jobs:
         run: |
           cd cicd1/target
           ls -a
+          java -jar cicd1-0.0.1-SNAPSHOT.jar
         
       - name: additional commands cicd2
-        if: startsWith(steps.changed-files.outputs.modified_files, 'cicd1/')
+        if: startsWith(steps.changed-files.outputs.modified_files, 'cicd2/')
         shell: cmd
         run: |
           cd cicd2/target
-          ls -a        
+          ls -a
+          java -jar cicd2-0.0.1-SNAPSHOT.jar
