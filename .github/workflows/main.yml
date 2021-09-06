@@ -22,6 +22,7 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
+      - shell: cmd
       - name: Checks-out your repository 
         uses: actions/checkout@v2
         with:
