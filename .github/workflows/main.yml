@@ -22,7 +22,6 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      - shell: cmd
       - name: Checks-out your repository 
         uses: actions/checkout@v2
         with:
@@ -40,6 +39,7 @@ jobs:
           
       - name: check if proj updated
         if: "!startsWith(steps.changed-files.outputs.modified_files, 'cicd')"
+        shell: cmd
         run: |
           exit 1
           
