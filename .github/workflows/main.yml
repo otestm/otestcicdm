@@ -55,6 +55,7 @@ jobs:
         shell: cmd
         run: |
           cd cicd1
+          ls -a
           echo "building 1cicd1"
           mvn -B package --file pom.xml
         
@@ -64,26 +65,22 @@ jobs:
         shell: cmd
         run: |
           cd cicd2
+          ls -a
           echo "building 2cicd2"
           mvn -B package --file pom.xml
-          
-      #Step 4
-      - name: some other commands
-        shell: cmd
-        run: ls -a
         
-      - name: additional commands cicd1
+      - name: kill and run cicd1
         if: startsWith(steps.changed-files.outputs.modified_files, 'cicd1/')
         shell: cmd
         run: |
           cd cicd1/target
-          ls -a
+          for /f "tokens=1" %a in ('jps -l^|findstr cicd1') do taskkill /f /pid %a          
           java -jar cicd1-0.0.1-SNAPSHOT.jar
         
-      - name: additional commands cicd2
+      - name: kill and run cicd2
         if: startsWith(steps.changed-files.outputs.modified_files, 'cicd2/')
         shell: cmd
         run: |
           cd cicd2/target
-          ls -a
+          for /f "tokens=1" %a in ('jps -l^|findstr cicd2') do taskkill /f /pid %a
           java -jar cicd2-0.0.1-SNAPSHOT.jar
