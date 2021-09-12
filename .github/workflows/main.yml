@@ -55,6 +55,7 @@ jobs:
         shell: cmd
         run: |
           cd cicd1
+          mv target/cicd1-0.0.1-SNAPSHOT.jar D:\testbkp\cicd1-bkp
           echo "building 1cicd1"
           mvn -B package --file pom.xml
         
@@ -64,6 +65,7 @@ jobs:
         shell: cmd
         run: |
           cd cicd2
+          mv target/cicd2-0.0.1-SNAPSHOT.jar D:\testbkp\cicd2-bkp
           echo "building 2cicd2"
           mvn -B package --file pom.xml
         
