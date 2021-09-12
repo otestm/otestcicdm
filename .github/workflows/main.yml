@@ -37,7 +37,7 @@ jobs:
         with:
           separator: ","
           
-      - name: check if proj updated
+      - name: check if proj file updated
         if: "!startsWith(steps.changed-files.outputs.modified_files, 'cicd')"
         shell: cmd
         run: |
