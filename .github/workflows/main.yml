@@ -73,7 +73,7 @@ jobs:
         run: |
           cd cicd1/target
           for /f "tokens=1" %%a in ('jps -l^|findstr cicd1') do taskkill /f /pid %%a          
-          java -jar cicd1-0.0.1-SNAPSHOT.jar
+          start java -jar cicd1-0.0.1-SNAPSHOT.jar
         
       - name: kill and run cicd2
         if: startsWith(steps.changed-files.outputs.modified_files, 'cicd2/')
@@ -81,4 +81,4 @@ jobs:
         run: |
           cd cicd2/target
           for /f "tokens=1" %%a in ('jps -l^|findstr cicd2') do taskkill /f /pid %%a
-          java -jar cicd2-0.0.1-SNAPSHOT.jar
+          start java -jar cicd2-0.0.1-SNAPSHOT.jar
